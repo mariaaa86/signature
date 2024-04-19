@@ -1,0 +1,468 @@
+@font-face {
+    font-family: 'Ascender Sans Mono WGL';
+    src: url('/fonts/AscenderSansMonoWGL-Regular.woff2') format('woff2'),
+         url('/fonts/AscenderSansMonoWGL-Regular.woff') format('woff'),
+         url('/fonts/AscenderSansMono.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Ascender Sans Mono WGL', Arial, sans-serif;
+    background: #BFBFBF;
+    color: #000;
+    margin: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: #BFBFBF;
+}
+
+#page-title {
+    margin-right: 10px;
+    font-size: 24px;
+    flex-grow: 1;
+}
+
+.title-container {
+    position: relative; /* This will be the anchor for the absolute positioning */
+    /* Other styles... */
+}
+
+.search-container {
+    position: absolute;
+    top: 13%; /* Now it will be 10% from the top of the .title-container */
+    left: 200px; /* Adjust as needed, depending on the size of the title and desired layout */
+    border-bottom: 2px solid black;
+    background-color: transparent;
+    max-width: 300px;
+    /* Other styles... */
+}
+
+
+#search-bar {
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 5px 0;
+    margin: 0 10px; /* Adjust as needed */
+    font-size: 16px; /* Size of the text within the search bar */
+    color: black; /* Text color */
+    
+}
+
+#search-bar::placeholder {
+    color: black;
+    opacity: 1; /* Full opacity for placeholder */
+}
+
+
+
+/* You might also need to adjust the height and padding of the search bar and icon container to match your design */
+
+.navcontainer {
+    display: flex; /* Use flexbox to easily position elements */
+    justify-content: center; /* Center the items */
+    position: absolute; /* Position relative to its relative positioned container */
+    top: 6%; /* Center vertically in the header */
+    left: 60%; /* Start positioning from the middle of the header */
+    transform: translate(-50%, -50%); /* Adjust to precisely center the links */
+    padding: 0; /* Remove padding if not necessary */
+    font-size: 1.5em; /* Adjust font size as needed */
+    margin: 0; /* Remove margin to eliminate space around the navcontainer */
+    flex-grow: 1;
+}
+
+.navcontainer a {
+    color: #000;
+    text-decoration: none;
+    padding: 0 15px;
+}
+
+.navcontainer a:hover,
+.navcontainer a:focus {
+    text-decoration: underline;
+}
+
+
+.sidenavcontainer {
+    position: absolute;
+    top: 5%;
+    right: 0;
+    background: none;
+    z-index: 100;
+    flex-grow: 1;
+}
+
+.sidenavcontainer a {
+    display: inline; /* Corrected from 'line' to 'block' */
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #000;
+}
+
+.sidenavcontainer a:hover,
+.sidenavcontainer a:focus {
+    text-decoration: underline;
+}
+
+.sidenavcontainer .active-link {
+    color: #808080; /* Grey color */
+    /* Add any other styles you want to apply to the active link */
+}
+.navcontainer .active-link {
+    color: #808080; /* Grey color */
+    /* Add any other styles you want to apply to the active link */
+}
+
+
+main {
+    padding: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    /* ... other styles ... */
+
+    .navcontainer {
+        /* Change font size and padding as needed */
+        font-size: 1.2em;
+        padding: 5px 0;
+    }
+
+    .navcontainer a {
+        padding: 0 5px; /* Reduce padding between links for smaller screens */
+    }
+
+    .search-container {
+        /* Adjust max-width to ensure search doesn't overlap or get too small */
+        max-width: 100%; /* Use 100% of the header space */
+        width: 100%; /* Ensure it takes the width properly */
+        left: 0; /* Align to the left */
+        top: 100%; /* Push down below the title */
+    }
+
+    #search-bar {
+        width: 100%; /* Ensure the search bar takes up the available width */
+    }
+
+    /* Adjust the position of the sidenav container to not overlap with the nav links */
+    .sidenavcontainer {
+        position: absolute;
+        top: 10px; /* Adjust the top position */
+        right: 10px; /* Adjust the right position */
+    }
+
+    /* ... */
+}
+
+@media (max-width: 768px) {
+    /* ... other styles ... */
+
+    .navcontainer {
+        font-size: 1em; /* Smaller font size */
+    }
+
+    .navcontainer a {
+        padding: 0 8px; /* Even smaller padding */
+    }
+
+    #page-title {
+        font-size: 18px; /* Adjust title font size for medium screens */
+    }
+    .sidenavcontainer {
+        font-size: small; /* Smaller font size */
+    }
+
+
+}
+
+@media (max-width: 480px) {
+    
+    .navcontainer {
+        /* Display navigation items inline on small screens */
+        display: inline;
+        font-size: 0.9em; /* Smaller font size for mobile */
+        position: static; /* Use static positioning */
+        margin: 0 auto; /* Center the container */
+        width: 100%; /* Full width */
+    }
+
+    .navcontainer a {
+        padding: 0 3%; /* Use percentage for padding to maintain proportion */
+        font-size: 4vw; /* Scale font size with the viewport width */
+        display: inline-block; /* Display links inline-block for proper spacing */
+        width: auto; /* Auto width for the links */
+    }
+
+    /* Make search bar full width and adjust position */
+    .search-container {
+        position: static; /* Default static positioning */
+        width: 100%; /* Full width for the search bar container */
+        order: 1; /* Order search bar after the logo/title */
+    }
+
+    #search-bar {
+        width: calc(100% - 20px); /* Subtract padding */
+        margin: 0 auto; /* Center the search bar */
+    }
+
+    #page-title {
+        font-size: 5vw; /* Adjust the logo font size for small screens */
+        margin-bottom: 10px; /* Add some space below the title */
+    }
+
+  
+}
+
+.background {
+    background-image: url('path/to/your/image.jpg');
+    background-size: cover; /* Adjust as needed */
+    background-position: center; /* Adjust as needed */
+}
+#perfume-image, #candle-image {
+    display: flex;
+    align-items: center;
+}
+#errorMessages {
+    color: red;
+    margin-bottom: 15px;
+}
+.intro-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap onto the next line */
+    align-items: center;
+    justify-content: center;
+}
+
+.intro-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.intro-text {
+    flex: 1;
+    padding-left: 20px; /* Adds space between the image and the text */
+}
+
+/* Responsive design with a media query */
+@media (max-width: 768px) { /* Adjust the breakpoint as needed */
+    .intro-container {
+        flex-direction: column;
+    }
+
+    .intro-image {
+        width: 100%; /* Full width on smaller screens */
+        margin-bottom: 20px; /* Adds space below the image */
+    }
+
+    .intro-text {
+        padding-left: 0; /* Removes the space on smaller screens */
+    }
+}
+.sidecontainer {
+    position: relative; /* Updated this line */
+    top: 30px; /* Adjust this value as needed to move the container down */
+    left: 0;
+    width: 150px; /* Adjust the width as needed */
+    height: 100%; /* Full height */
+    background-color: #BFBFBF; /* Background color */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    padding-top: 10px; /* Space at the top */
+    z-index: 1000; /* Ensure it's above other content */
+}
+
+
+/* Style for the navigation links */
+.sidecontainer ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidecontainer ul li {
+    padding: 8px 16px;
+    border-bottom: 1px solid #ddd; /* Add a border between links */
+}
+
+.sidecontainer ul li:last-child {
+    border-bottom: none; /* Remove border for the last link */
+}
+
+.sidecontainer ul li a {
+    text-decoration: none;
+    color: #333; /* Link color */
+    display: block; /* Make the links block-level elements */
+}
+
+.sidecontainer ul li a:hover {
+    background-color: #ddd; /* Background color on hover */
+}
+
+  
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    grid-gap: 20px; /* Gap between grid items */
+}
+
+.grid-container > div {
+    padding: 20px; /* Padding for grid items */
+    text-align: center; /* Center-align content */
+    border: 1px solid #ddd; /* Border for grid items */
+}
+
+.grid-container img {
+    max-width: 100%; /* Ensure images don't exceed their container */
+}
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* Single column */
+    }
+}
+
+h2 {
+    display: block;
+    margin-top: 0; /* Reset any top margin to ensure it doesn't add extra space */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#customize-section {
+    display: flex;
+    justify-content: space-between; /* This will space out the child elements */
+    align-items: flex-start; /* This aligns the items to the top of the container */
+}
+
+.store-locations {
+    text-align: left;
+    list-style-type: none;
+    padding-left: 100px; /* Reset any left padding as the flexbox will handle spacing */
+    margin-top: 50px; /* No negative margin is needed */
+    flex-grow: 1; /* Allows the list to grow and fill the space */
+}
+
+
+
+/* CSS for positioning the video container */
+.video-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Align items to the end (right side) */
+    margin-left: 100px; /* Adjust margin as needed */
+    margin-top: 50px; /* Adjusts the vertical position to move up */
+}
+
+/* CSS to adjust video width */
+.video-container video {
+    width: 350px; /* Adjust width as needed */
+    height: auto; /* Maintain aspect ratio */
+}
+@media screen and (max-width: 600px) {
+    #customize-section {
+        flex-direction: column; /* Change flex direction to column for one-column layout */
+    }
+
+    .video-container,
+    .store-locations {
+        margin-left: 50px; /* Reset margin */
+        margin-right: 50px;
+        margin-top: 20px; /* Adjust margin-top for spacing */
+    }
+
+    .store-locations {
+        padding-left: 0; /* Reset padding */
+    }
+
+    .video-container video {
+        width: 100%; /* Make the video fill the container width */
+    }
+}
+
+/* Aligns the top of the label with the top of the input fields */
+.form-container label {
+    display: inline-block; /* Align with inputs */
+    vertical-align: top; /* Align the label to the top of the input field */
+    margin-top: 0; /* Adjust this as needed to align with the input fields */
+    padding-top: 0; /* Make sure the label is aligned to the top */
+  }
+  
+  /* You might want to specify a class for labels associated with inputs */
+  .input-label {
+    margin-right: 10px; /* Space between label and input */
+  }
+  
+  .form-container textarea {
+    vertical-align: top; /* Make sure the textarea aligns with the top of other inputs */
+    height: auto; /* Adjust height to match the design */
+  }
+  
+/* Default styles for larger screens */
+.form-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows fields to wrap onto next line if needed */
+    justify-content: space-between; /* Spaces out the children */
+    max-width: 100%; /* Full width */
+  }
+  
+  .form-field, 
+  .form-container input[type="text"], 
+  .form-container input[type="email"], 
+  .form-container textarea, 
+  .form-container input[type="submit"] {
+    /* Adjust widths and margins to fit your design, 
+       they should add up to less than 100% when combined 
+       to accommodate margins/paddings */
+    width: calc(33.333% - 10px); /* Example for three fields */
+    margin-right: 10px; /* Spacing between fields */
+    box-sizing: border-box; /* Include padding and border in the element's width */
+  }
+  
+  /* You might want to reset the right margin for the last element if using flex-wrap */
+  .form-container input[type="submit"] {
+    width: 150px; /* Fixed width */
+    height: 40px; /* Fixed height */
+    padding: 0; /* Padding reset if you're setting exact dimensions */
+    margin-left: 0; /* To maintain consistency with the text inputs */
+    box-sizing: border-box; /* Include padding and border in the width */
+  }
+  
+  /* Adjustments for smaller screens using a media query */
+  @media (max-width: 768px) {
+    .form-container {
+      flex-direction: column; /* Stack children vertically */
+      align-items: flex-start; /* Aligns children to the left */
+    }
+  
+    .form-field, 
+    .form-container input[type="text"], 
+    .form-container input[type="email"], 
+    .form-container textarea, 
+    .form-container input[type="submit"] {
+      width: 100%; /* Full width for smaller screens */
+      margin-right: 0; /* Reset any right margins */
+      margin-bottom: 15px; /* Adds space between stacked fields */
+    }
+  
+    /* Remove the bottom margin from the submit button to stack it directly under the fields */
+    .form-container input[type="submit"] {
+        width: 150px; /* Fixed width */
+        height: 40px; /* Fixed height */
+        padding: 0; /* Padding reset if you're setting exact dimensions */
+        margin-left: 0; /* To maintain consistency with the text inputs */
+        box-sizing: border-box; /* Include padding and border in the width */
+      }
+  }
+  
